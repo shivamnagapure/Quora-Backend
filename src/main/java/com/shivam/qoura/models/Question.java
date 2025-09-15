@@ -1,11 +1,17 @@
 package com.shivam.qoura.models;
 
 import jakarta.persistence.*;
+import lombok.*;
 
 import java.util.List;
 import java.util.Set;
 
 @Entity
+@Builder
+@NoArgsConstructor
+@AllArgsConstructor
+@Setter
+@Getter
 public class Question extends BaseModel{
 
     @Column(nullable = false)

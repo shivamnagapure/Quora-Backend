@@ -14,4 +14,5 @@ public class Topic extends BaseModel{
 
     @ManyToMany(mappedBy = "topics")
     List<Question> questions ;
+
 }
