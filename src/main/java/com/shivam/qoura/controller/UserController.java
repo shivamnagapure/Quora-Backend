@@ -39,4 +39,11 @@ public class UserController {
         return ResponseEntity.ok(response);
     }
 
+    @PutMapping("/{userId}")
+    public ResponseEntity<?> updateUser(@PathVariable Long userId , @RequestBody UserRequest userRequest){
+        User user = userRequestToUser.convertToUser(userRequest);
+        User findUser = userService.updateUserById(userId , user);
+        UserResponse response = Response.userResponse(findUser);
+        return  ResponseEntity.ok().body(response) ;
+    }
 }
