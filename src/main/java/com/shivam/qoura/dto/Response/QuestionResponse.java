@@ -17,8 +17,9 @@ public class QuestionResponse {
     private Long id ;
     private String title ;
     private String body ;
+    private Long userId ;
 
-    @JsonIgnore(value = false)
+    @JsonIgnore(value = true)
     private List<String> topics ;
 
     @JsonIgnore

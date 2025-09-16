@@ -6,6 +6,7 @@ import com.shivam.qoura.models.Question;
 import com.shivam.qoura.models.Topic;
 import com.shivam.qoura.models.User;
 import org.springframework.stereotype.Component;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
@@ -23,12 +24,12 @@ public class Response {
     //not able to fetch topics
     public static QuestionResponse questionResponse(Question question){
         //convert List of topics to List of topic Names
-        List<String> names = question.getTopics().stream().map(Topic::getName).toList();
+        //List<String> names = question.getTopics().stream().map(Topic::getName).toList();
         return QuestionResponse.builder()
                 .id(question.getId())
                 .title(question.getTitle())
                 .body(question.getBody())
-                .topics(names)
+//                .userId(question)
                 .build();
     }
 }

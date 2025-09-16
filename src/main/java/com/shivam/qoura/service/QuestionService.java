@@ -4,6 +4,7 @@ import com.shivam.qoura.models.Question;
 import com.shivam.qoura.repositories.QuestionRepository;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -22,6 +23,12 @@ public class QuestionService {
 
     public Question saveQuestion(Question question){
         return questionRepository.save(question);
+    }
+
+    public List<Question> searchQuestions(String text , String tag){
+        List<Question> questionList =  questionRepository.searchQuestions(text , tag);
+
+        return questionList ;
     }
 
 }

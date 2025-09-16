@@ -1,7 +1,10 @@
 package com.shivam.qoura.models;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.*;
+import org.hibernate.annotations.Fetch;
+import org.hibernate.annotations.FetchMode;
 
 import java.util.List;
 import java.util.Set;
@@ -21,7 +24,7 @@ public class Question extends BaseModel{
     private String body ;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "user_id", nullable = false)
+    @JoinColumn(name = "user_id", nullable = false )
     User user ; //Many questions can have one user
 
     @ManyToMany
