@@ -2,8 +2,10 @@ package com.shivam.qoura.controller;
 
 import com.shivam.qoura.adapters.QueReqToQue;
 import com.shivam.qoura.dto.Request.QuestionRequest;
+import com.shivam.qoura.dto.Response.QuestionResponse;
 import com.shivam.qoura.models.Question;
 import com.shivam.qoura.service.QuestionService;
+import com.shivam.qoura.utils.Response;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -26,10 +28,14 @@ public class QuestionController {
 
     @PostMapping
     public ResponseEntity<?> addQuestion(@RequestBody QuestionRequest questionRequest){
+        System.out.println(questionRequest.getTopics());
         Question question = queReqToQue.convertToQuestion(questionRequest);
+        System.out.println("queReqToQue");
         Question questionSaved = questionService.saveQuestion(question);
-
-        return ResponseEntity.status(HttpStatus.CREATED).body(questionSaved);
+        System.out.println("questionService");
+        QuestionResponse response = Response.questionResponse(questionSaved);
+        System.out.println(response.getTopics());
+        return ResponseEntity.status(HttpStatus.CREATED).body(response);
 
     }
 }

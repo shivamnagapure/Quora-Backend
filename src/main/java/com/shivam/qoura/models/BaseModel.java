@@ -21,7 +21,7 @@ public class BaseModel {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id ;
 
-    @Column(nullable = false)
+    @Column(nullable = false , updatable = false)
     @CreatedDate
     @Temporal(value = TemporalType.TIMESTAMP)
     private Date createdAt ;

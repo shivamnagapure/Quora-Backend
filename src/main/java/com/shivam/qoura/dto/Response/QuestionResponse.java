@@ -1,6 +1,7 @@
 package com.shivam.qoura.dto.Response;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.shivam.qoura.models.Topic;
 import lombok.*;
 
 import java.util.Date;
@@ -17,7 +18,7 @@ public class QuestionResponse {
     private String title ;
     private String body ;
 
-    @JsonIgnore
+    @JsonIgnore(value = false)
     private List<String> topics ;
 
     @JsonIgnore

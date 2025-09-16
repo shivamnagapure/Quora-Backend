@@ -20,7 +20,8 @@ public class Question extends BaseModel{
     @Column(nullable = false)
     private String body ;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "user_id", nullable = false)
     User user ; //Many questions can have one user
 
     @ManyToMany
