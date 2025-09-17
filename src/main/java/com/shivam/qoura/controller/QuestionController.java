@@ -38,8 +38,7 @@ public class QuestionController {
     @GetMapping("/search")
     public ResponseEntity<List<?>> getQuestions(@RequestParam(required = false) String text ,
                                              @RequestParam(required = false) String tag){
-        List<Question> questionList = questionService.searchQuestions(text, tag);
-        List<QuestionResponse> responses = questionList.stream().map(Response::questionResponse).toList();
-        return ResponseEntity.ok().body(responses);
+        List<QuestionResponse>  questionList = questionService.searchQuestions(text, tag);
+        return ResponseEntity.ok().body(questionList);
     }
 }

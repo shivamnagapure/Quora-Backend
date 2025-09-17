@@ -3,8 +3,14 @@ package com.shivam.qoura.models;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.ManyToOne;
+import lombok.*;
 
 @Entity
+@Builder
+@AllArgsConstructor
+@NoArgsConstructor
+@Getter
+@Setter
 public class Answer extends BaseModel{
 
     @Column(nullable = false)

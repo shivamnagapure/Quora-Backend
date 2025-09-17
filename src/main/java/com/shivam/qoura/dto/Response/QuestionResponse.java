@@ -25,5 +25,10 @@ public class QuestionResponse {
     @JsonIgnore
     private Date createdAt ;
 
-
+    public QuestionResponse(Long id, String title, String body, Long userId) { // for conversion of Query data into question
+        this.id = id;
+        this.title = title;
+        this.body = body;
+        this.userId = userId;
+    }
 }

@@ -1,14 +1,12 @@
 package com.shivam.qoura.utils;
 
+import com.shivam.qoura.dto.Response.AnswerResponse;
 import com.shivam.qoura.dto.Response.QuestionResponse;
 import com.shivam.qoura.dto.Response.UserResponse;
+import com.shivam.qoura.models.Answer;
 import com.shivam.qoura.models.Question;
-import com.shivam.qoura.models.Topic;
 import com.shivam.qoura.models.User;
 import org.springframework.stereotype.Component;
-import org.springframework.transaction.annotation.Transactional;
-
-import java.util.List;
 
 @Component
 public class Response {
@@ -29,7 +27,16 @@ public class Response {
                 .id(question.getId())
                 .title(question.getTitle())
                 .body(question.getBody())
-//                .userId(question)
+                .userId(question.getUser().getId())
+                .build();
+    }
+
+    public static AnswerResponse answerResponse(Answer answer){
+        return AnswerResponse.builder()
+                .answerId(answer.getId())
+                .questionId(answer.getQuestion().getId())
+                .userId(answer.getUser().getId())
+                .text(answer.getText())
                 .build();
     }
 }

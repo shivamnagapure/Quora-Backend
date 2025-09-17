@@ -1,7 +1,9 @@
 package com.shivam.qoura.service;
 
+import com.shivam.qoura.dto.Response.QuestionResponse;
 import com.shivam.qoura.models.Question;
 import com.shivam.qoura.repositories.QuestionRepository;
+import com.shivam.qoura.utils.Response;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -25,10 +27,10 @@ public class QuestionService {
         return questionRepository.save(question);
     }
 
-    public List<Question> searchQuestions(String text , String tag){
-        List<Question> questionList =  questionRepository.searchQuestions(text , tag);
+    public List<QuestionResponse> searchQuestions(String text , String tag){
 
-        return questionList ;
+        return questionRepository.searchQuestions(text , tag);
     }
+
 
 }
