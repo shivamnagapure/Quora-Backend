@@ -1,9 +1,11 @@
 package com.shivam.qoura.utils;
 
 import com.shivam.qoura.dto.Response.AnswerResponse;
+import com.shivam.qoura.dto.Response.CommentResponse;
 import com.shivam.qoura.dto.Response.QuestionResponse;
 import com.shivam.qoura.dto.Response.UserResponse;
 import com.shivam.qoura.models.Answer;
+import com.shivam.qoura.models.Comment;
 import com.shivam.qoura.models.Question;
 import com.shivam.qoura.models.User;
 import org.springframework.stereotype.Component;
@@ -37,6 +39,15 @@ public class Response {
                 .questionId(answer.getQuestion().getId())
                 .userId(answer.getUser().getId())
                 .text(answer.getText())
+                .build();
+    }
+
+    public static CommentResponse commentResponse(Comment comment){
+        return CommentResponse.builder()
+                .id(comment.getId())
+                .userName(comment.getUser().getUserName())
+                .answer(comment.getAnswer().getText())
+                .comment(comment.getText())
                 .build();
     }
 }

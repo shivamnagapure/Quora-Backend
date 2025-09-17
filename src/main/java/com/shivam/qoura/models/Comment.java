@@ -3,11 +3,20 @@ package com.shivam.qoura.models;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.ManyToOne;
+import lombok.*;
 
 @Entity
+@Builder
+@NoArgsConstructor
+@AllArgsConstructor
+@Getter
+@Setter
 public class Comment extends BaseModel{
     @ManyToOne
-    Comment parentId ; //one parent can have many child comments
+    Comment parentComment ; //one parent can have many child comments
+
+    @ManyToOne
+    Answer answer ; //one answer can have many comments
 
     @Column(nullable = false)
     private  String text ;

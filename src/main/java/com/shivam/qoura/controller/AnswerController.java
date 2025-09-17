@@ -26,12 +26,21 @@ public class AnswerController {
     @PostMapping("/{questionId}/answers")
     public ResponseEntity<?> postAnswer(@PathVariable("questionId") Long questionId,
             @RequestBody AnswerRequest answerRequest){
-        //set question id
+        //set question id in controller itself
         answerRequest.setQuestionId(questionId);
         //conversion of post answerReq To Answer
         Answer convertToAns = ansReqToAnswer.convertToAnswer(answerRequest);
         Answer answer = answerService.saveAnswer(convertToAns);
         AnswerResponse response = Response.answerResponse(answer);
         return ResponseEntity.status(HttpStatus.CREATED).body(response);
+    }
+
+    @PutMapping("/{answerId}")
+    public ResponseEntity<?> changeAnswer(@RequestBody  AnswerRequest answerRequest , @PathVariable Long answerId){
+        //set answerId
+
+        Answer newAnswer = answerService.replaceAnswer(answerRequest , answerId);
+        AnswerResponse response = Response.answerResponse(newAnswer);
+        return ResponseEntity.ok(response);
     }
 }
