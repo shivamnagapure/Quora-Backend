@@ -15,6 +15,7 @@ import java.util.Set;
 @AllArgsConstructor
 @Setter
 @Getter
+@Table(name = "questions")
 public class Question extends BaseModel{
 
     @Column(nullable = false)

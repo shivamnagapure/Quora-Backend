@@ -3,6 +3,7 @@ package com.shivam.qoura.models;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 
+import jakarta.persistence.Table;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
 import lombok.*;
@@ -13,6 +14,7 @@ import lombok.*;
 @AllArgsConstructor
 @Getter
 @Setter
+@Table(name = "users")
 public class User extends BaseModel{
     @Column(nullable = false)
     private String userName ;

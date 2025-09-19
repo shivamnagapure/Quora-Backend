@@ -1,24 +1,22 @@
 package com.shivam.qoura.models;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.ManyToOne;
+import jakarta.persistence.*;
 import lombok.*;
 
 @Entity
-@Builder
-@AllArgsConstructor
-@NoArgsConstructor
-@Getter
-@Setter
-public class Answer extends BaseModel{
+@Table(name = "answers")
+@Getter @Setter
+@NoArgsConstructor @AllArgsConstructor @Builder
+public class Answer extends BaseModel {
 
     @Column(nullable = false)
-    private String text ;
+    private String text;
 
-    @ManyToOne
-    Question question ; //one question can have many answers
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "question_id", nullable = false)
+    private Question question;
 
-    @ManyToOne
-    User user ; //many answers can belong to one user
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "user_id", nullable = false)
+    private User user;
 }
