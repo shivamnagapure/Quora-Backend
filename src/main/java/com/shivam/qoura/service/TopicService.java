@@ -56,7 +56,7 @@ public class TopicService {
                     .collect(Collectors.joining(", "));
             System.out.println(values);
 
-            String sql = "INSERT IGNORE INTO topic(name , created_at ) VALUES " + values;
+            String sql = "INSERT IGNORE INTO topics(name , created_at ) VALUES " + values;
             entityManager.createNativeQuery(sql).executeUpdate();
         }
 
