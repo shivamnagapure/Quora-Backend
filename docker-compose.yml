@@ -1,0 +1,33 @@
+version: '3.8'
+services:
+  db:
+    image: mysql:8
+    container_name: quora-db
+    environment:
+      MYSQL_DATABASE: quorabackend
+      MYSQL_ROOT_PASSWORD : Shivam@123
+#    ports:
+#      - "3306:3306"
+    volumes:
+      - db_data:/var/lib/mysql
+    healthcheck:
+      test: [ "CMD", "mysqladmin", "ping", "-h", "localhost", "-pShivam@123" ]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+
+  app:
+    build: .
+    container_name: quora-app
+    ports:
+      - "8080:8080"
+    depends_on:
+      db:
+        condition: service_healthy
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:mysql://quora-db:3306/quorabackend?useSSL=false&allowPublicKeyRetrieval=true
+      SPRING_DATASOURCE_USERNAME: root
+      SPRING_DATASOURCE_PASSWORD: Shivam@123
+
+volumes:
+  db_data:
